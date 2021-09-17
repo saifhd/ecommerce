@@ -33,20 +33,20 @@
     <!-- vendor css -->
     <link href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-    <link href="{{asset('public/backend/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-    <link href="{{asset('public/backend/lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
-    <link href="{{asset('public/backend/lib/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet">
-    <link href="{{asset('public/backend/lib/rickshaw/rickshaw.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/backend/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{asset('/backend/lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
+    <link href="{{asset('/backend/lib/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet">
+    <link href="{{asset('/backend/lib/rickshaw/rickshaw.min.css')}}" rel="stylesheet">
 
     <!-- Starlight CSS -->
-    <link rel="stylesheet" href="{{asset('public/backend/css/starlight.css')}}">
+    <link rel="stylesheet" href="{{asset('/backend/css/starlight.css')}}">
 
       <!-- DataTable CSS -->
-    <link href="{{asset('public/backend/lib/highlightjs/github.css')}}" rel="stylesheet">
-    <link href="{{asset('public/backend/lib/datatables/jquery.dataTables.css')}}" rel="stylesheet">
-    <link href="{{asset('public/backend/lib/select2/css/select2.min.css')}}" rel="stylesheet">
-    <link href="{{asset('public/backend/lib/summernote/summernote-bs4.css')}}" rel="stylesheet">
-    
+    <link href="{{asset('/backend/lib/highlightjs/github.css')}}" rel="stylesheet">
+    <link href="{{asset('/backend/lib/datatables/jquery.dataTables.css')}}" rel="stylesheet">
+    <link href="{{asset('/backend/lib/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/backend/lib/summernote/summernote-bs4.css')}}" rel="stylesheet">
+
 
 
   </head>
@@ -54,13 +54,13 @@
   <body>
 
    @guest
-   
+
 
     @else
         <!-- ########## START: LEFT PANEL ########## -->
 <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> starlight</a></div>
     <div class="sl-sideleft">
-      
+
 
       <br>
       <div class="sl-sideleft-menu">
@@ -82,7 +82,7 @@
           <li class="nav-item"><a href="{{route('categories')}}" class="nav-link">Category</a></li>
           <li class="nav-item"><a href="{{route('sub.category')}}" class="nav-link">SubCategory</a></li>
           <li class="nav-item"><a href="{{route('brands')}}" class="nav-link">Brand</a></li>
-         
+
         </ul>
         @endif
 
@@ -97,7 +97,7 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{route('admin.coupon')}}" class="nav-link">Coupon</a></li>
-          
+
         </ul>
         @endif
 
@@ -148,7 +148,7 @@
           <li class="nav-item"><a href="{{route('all.blog.post')}}" class="nav-link">Post List</a></li>
         </ul>
         @endif
-       
+
         @if(Auth::user()->other==1)
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
@@ -190,7 +190,7 @@
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{route('admin.today.order')}}" class="nav-link">Create User</a></li>
           <li class="nav-item"><a href="{{route('admin.all.user')}}" class="nav-link">All User</a></li>
-          
+
         </ul>
         @endif
 
@@ -205,7 +205,7 @@
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{route('admin.return.request')}}" class="nav-link">Return Request</a></li>
           <li class="nav-item"><a href="{{route('admin.all.request')}}" class="nav-link">All Request</a></li>
-          
+
         </ul>
         @endif
         @if(Auth::user()->stock==1)
@@ -218,7 +218,7 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{route('admin.product.stock')}}" class="nav-link">Stock</a></li>
-          
+
         </ul>
         @endif
         @if(Auth::user()->contact==1)
@@ -230,13 +230,13 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          
+
           <li class="nav-item"><a href="{{route('admin.all.contact')}}" class="nav-link">All Messages</a></li>
-          
+
         </ul>
         @endif
 
-        
+
         @if(Auth::user()->setting==1)
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
@@ -247,11 +247,11 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{route('admin.site.setting')}}" class="nav-link">Site Setting</a></li>
-          
-          
+
+
         </ul>
         @endif
-      
+
       </div><!-- sl-sideleft-menu -->
 
       <br>
@@ -273,16 +273,16 @@
             </a>
             <div class="dropdown-menu dropdown-menu-header wd-200">
               <ul class="list-unstyled user-profile-nav">
-                <li><a href="{{route('edit.admin.profile',Auth::user()->id)}}"><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
+                <li><a href="{{route('edit.admin.profile',auth()->user()->id)}}"><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
                 <li><a href="{{route('admin.password.change')}}"><i class="icon ion-ios-gear-outline"></i> Settings</a></li>
-                
-                
-                
+
+
+
                 <li><a href="{{route('admin.logout')}}"><i class="icon ion-power"></i> Sign Out</a></li>
               </ul>
               <?php
-                
-                
+
+
               ?>
             </div><!-- dropdown-menu -->
           </div><!-- dropdown -->
@@ -320,7 +320,7 @@
             @foreach($messages as $row)
             <a href="{{route('admin.message.read',$row->id)}}" class="media-list-link">
               <div class="media">
-                <!-- <img src="{{asset('public/backend/img/img3.jpg')}}" class="wd-40 rounded-circle" alt=""> -->
+                <!-- <img src="{{asset('/backend/img/img3.jpg')}}" class="wd-40 rounded-circle" alt=""> -->
                 <div class="media-body">
                 <?php
                   $date=Carbon\Carbon::now()->diffForHumans($row->created_at);
@@ -332,7 +332,7 @@
               </div><!-- media -->
             </a>
             @endforeach
-            
+
           </div><!-- media-list -->
           <div class="pd-15">
             <a href="{{route('admin.all.contact')}}" class="btn btn-secondary btn-block bd-0 rounded-0 tx-10 tx-uppercase tx-mont tx-medium tx-spacing-2">View More Messages</a>
@@ -344,7 +344,7 @@
             <!-- loop starts here -->
             <a href="" class="media-list-link read">
               <div class="media pd-x-20 pd-y-15">
-                <img src="{{asset('public/backend/img/img8.jpg')}}" class="wd-40 rounded-circle" alt="">
+                <img src="{{asset('/backend/img/img8.jpg')}}" class="wd-40 rounded-circle" alt="">
                 <div class="media-body">
                   <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Suzzeth Bungaos</strong> tagged you and 18 others in a post.</p>
                   <span class="tx-12">October 03, 2017 8:45am</span>
@@ -354,7 +354,7 @@
             <!-- loop ends here -->
             <a href="" class="media-list-link read">
               <div class="media pd-x-20 pd-y-15">
-                <img src="{{asset('public/backend/img/img9.jpg')}}" class="wd-40 rounded-circle" alt="">
+                <img src="{{asset('/backend/img/img9.jpg')}}" class="wd-40 rounded-circle" alt="">
                 <div class="media-body">
                   <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Mellisa Brown</strong> appreciated your work <strong class="tx-medium tx-gray-800">The Social Network</strong></p>
                   <span class="tx-12">October 02, 2017 12:44am</span>
@@ -363,7 +363,7 @@
             </a>
             <a href="" class="media-list-link read">
               <div class="media pd-x-20 pd-y-15">
-                <img src="{{asset('public/backend/img/img10.jpg')}}" class="wd-40 rounded-circle" alt="">
+                <img src="{{asset('/backend/img/img10.jpg')}}" class="wd-40 rounded-circle" alt="">
                 <div class="media-body">
                   <p class="tx-13 mg-b-0 tx-gray-700">20+ new items added are for sale in your <strong class="tx-medium tx-gray-800">Sale Group</strong></p>
                   <span class="tx-12">October 01, 2017 10:20pm</span>
@@ -372,7 +372,7 @@
             </a>
             <a href="" class="media-list-link read">
               <div class="media pd-x-20 pd-y-15">
-                <img src="{{asset('public/backend/img/img5.jpg')}}" class="wd-40 rounded-circle" alt="">
+                <img src="{{asset('/backend/img/img5.jpg')}}" class="wd-40 rounded-circle" alt="">
                 <div class="media-body">
                   <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Julius Erving</strong> wants to connect with you on your conversation with <strong class="tx-medium tx-gray-800">Ronnie Mara</strong></p>
                   <span class="tx-12">October 01, 2017 6:08pm</span>
@@ -381,7 +381,7 @@
             </a>
             <a href="" class="media-list-link read">
               <div class="media pd-x-20 pd-y-15">
-                <img src="{{asset('public/backend/img/img8.jpg')}}" class="wd-40 rounded-circle" alt="">
+                <img src="{{asset('/backend/img/img8.jpg')}}" class="wd-40 rounded-circle" alt="">
                 <div class="media-body">
                   <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Suzzeth Bungaos</strong> tagged you and 12 others in a post.</p>
                   <span class="tx-12">September 27, 2017 6:45am</span>
@@ -390,7 +390,7 @@
             </a>
             <a href="" class="media-list-link read">
               <div class="media pd-x-20 pd-y-15">
-                <img src="{{asset('public/backend/img/img10.jpg')}}" class="wd-40 rounded-circle" alt="">
+                <img src="{{asset('/backend/img/img10.jpg')}}" class="wd-40 rounded-circle" alt="">
                 <div class="media-body">
                   <p class="tx-13 mg-b-0 tx-gray-700">10+ new items added are for sale in your <strong class="tx-medium tx-gray-800">Sale Group</strong></p>
                   <span class="tx-12">September 28, 2017 11:30pm</span>
@@ -399,7 +399,7 @@
             </a>
             <a href="" class="media-list-link read">
               <div class="media pd-x-20 pd-y-15">
-                <img src="{{asset('public/backend/img/img9.jpg')}}" class="wd-40 rounded-circle" alt="">
+                <img src="{{asset('/backend/img/img9.jpg')}}" class="wd-40 rounded-circle" alt="">
                 <div class="media-body">
                   <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Mellisa Brown</strong> appreciated your work <strong class="tx-medium tx-gray-800">The Great Pyramid</strong></p>
                   <span class="tx-12">September 26, 2017 11:01am</span>
@@ -408,7 +408,7 @@
             </a>
             <a href="" class="media-list-link read">
               <div class="media pd-x-20 pd-y-15">
-                <img src="{{asset('public/backend/img/img5.jpg')}}" class="wd-40 rounded-circle" alt="">
+                <img src="{{asset('/backend/img/img5.jpg')}}" class="wd-40 rounded-circle" alt="">
                 <div class="media-body">
                   <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Julius Erving</strong> wants to connect with you on your conversation with <strong class="tx-medium tx-gray-800">Ronnie Mara</strong></p>
                   <span class="tx-12">September 23, 2017 9:19pm</span>
@@ -423,19 +423,19 @@
     <!-- ########## END: RIGHT PANEL ########## --->
     @endguest
     @yield('admin_content')
-    
-    
-    
-    <script src="{{asset('public/backend/lib/jquery/jquery.js')}}"></script>
-    <script src="{{asset('public/backend/lib/popper.js/popper.js')}}"></script>
-    <script src="{{asset('public/backend/lib/bootstrap/bootstrap.js')}}"></script>
-    <script src="{{asset('public/backend/lib/jquery-ui/jquery-ui.js')}}"></script>
-    <script src="{{asset('public/backend/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js')}}"></script>
 
-    <script src="{{asset('public/backend/lib/highlightjs/highlight.pack.js')}}"></script>
-    <script src="{{asset('public/backend/lib/datatables/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('public/backend/lib/datatables-responsive/dataTables.responsive.js')}}"></script>
-    <script src="{{asset('public/backend/lib/select2/js/select2.min.js')}}"></script>
+
+
+    <script src="{{asset('/backend/lib/jquery/jquery.js')}}"></script>
+    <script src="{{asset('/backend/lib/popper.js/popper.js')}}"></script>
+    <script src="{{asset('/backend/lib/bootstrap/bootstrap.js')}}"></script>
+    <script src="{{asset('/backend/lib/jquery-ui/jquery-ui.js')}}"></script>
+    <script src="{{asset('/backend/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js')}}"></script>
+
+    <script src="{{asset('/backend/lib/highlightjs/highlight.pack.js')}}"></script>
+    <script src="{{asset('/backend/lib/datatables/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('/backend/lib/datatables-responsive/dataTables.responsive.js')}}"></script>
+    <script src="{{asset('/backend/lib/select2/js/select2.min.js')}}"></script>
     <script>
       $(function(){
         'use strict';
@@ -462,20 +462,20 @@
     </script>
 
 
-    <script src="{{asset('public/backend/lib/jquery.sparkline.bower/jquery.sparkline.min.js')}}"></script>
-    <script src="{{asset('public/backend/lib/d3/d3.js')}}"></script>
-    <script src="{{asset('public/backend/lib/rickshaw/rickshaw.min.js')}}"></script>
-    <script src="{{asset('public/backend/lib/chart.js/Chart.js')}}"></script>
-    <script src="{{asset('public/backend/lib/Flot/jquery.flot.js')}}"></script>
-    <script src="{{asset('public/backend/lib/Flot/jquery.flot.pie.js')}}"></script>
-    <script src="{{asset('public/backend/lib/Flot/jquery.flot.resize.js')}}"></script>
-    <script src="{{asset('public/backend/lib/flot-spline/jquery.flot.spline.js')}}"></script>
+    <script src="{{asset('/backend/lib/jquery.sparkline.bower/jquery.sparkline.min.js')}}"></script>
+    <script src="{{asset('/backend/lib/d3/d3.js')}}"></script>
+    <script src="{{asset('/backend/lib/rickshaw/rickshaw.min.js')}}"></script>
+    <script src="{{asset('/backend/lib/chart.js/Chart.js')}}"></script>
+    <script src="{{asset('/backend/lib/Flot/jquery.flot.js')}}"></script>
+    <script src="{{asset('/backend/lib/Flot/jquery.flot.pie.js')}}"></script>
+    <script src="{{asset('/backend/lib/Flot/jquery.flot.resize.js')}}"></script>
+    <script src="{{asset('/backend/lib/flot-spline/jquery.flot.spline.js')}}"></script>
 
 
-    <script src="{{asset('public/backend/lib/medium-editor/medium-editor.js')}}"></script>
-    <script src="{{asset('public/backend/lib/summernote/summernote-bs4.min.js')}}"></script>
+    <script src="{{asset('/backend/lib/medium-editor/medium-editor.js')}}"></script>
+    <script src="{{asset('/backend/lib/summernote/summernote-bs4.min.js')}}"></script>
 
-    
+
     <script>
       $(function(){
         'use strict';
@@ -491,13 +491,13 @@
       });
     </script>
 
-    <script src="{{asset('public/backend/js/starlight.js')}}"></script>
-    <script src="{{asset('public/backend/js/ResizeSensor.js')}}"></script>
-    <script src="{{asset('public/backend/js/dashboard.js')}}"></script>
+    <script src="{{asset('/backend/js/starlight.js')}}"></script>
+    <script src="{{asset('/backend/js/ResizeSensor.js')}}"></script>
+    <script src="{{asset('/backend/js/dashboard.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
-    
-    
+
+
     <script>
         @if(Session::has('messege'))
           var type="{{Session::get('alert-type','info')}}"
@@ -516,10 +516,10 @@
                   break;
           }
         @endif
-     </script>  
-    
+     </script>
 
-     <script>  
+
+     <script>
          $(document).on("click", "#delete", function(e){
              e.preventDefault();
              var link = $(this).attr("href");

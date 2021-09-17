@@ -10,21 +10,23 @@ use App\Model\Contact;
 use App\Model\Admin\Product;
 use App\User;
 use Auth;
-use Image;
+// use Image;
+use Intervention\Image\Facades\Image;
+
 class FrontController extends Controller
 {
     //
-    
+
     public function storenewsletter(Request $request)
     {
         $validateData=$request->validate([
             'email'=>'required|unique:newsletters|max:55',
-            
+
         ]);
         // dd($request->all());
         $nl=new Newsletter();
         $nl->email=$request->email;
-        
+
         $nl->save();
         $notification=array(
             'messege'=>'Thanks For Subscribing ',
@@ -76,13 +78,13 @@ class FrontController extends Controller
         return view('pages.search_result',compact('search'));
     }
     public function editProfile(){
-        $id=Auth::id();
+        $id=auth()->user()->id;
         $user=User::find($id);
         // dd($user);
         return view('pages.edit_profile',compact('user'));
     }
     public function updateProfile(Request $request){
-        $id=Auth::id();
+        $id=auth()->user()->id;
         $user=User::find($id);
         $user->name=$request->name;
         $user->phone=$request->phone;
@@ -95,20 +97,20 @@ class FrontController extends Controller
          return Redirect()->back()->with($notification);
     }
     public function updateProfileImage(Request $request){
-        $id=Auth::id();
+        $id=auth()->user()->id;
         $user=User::find($id);
         $image_one=$request->file('image_one');
 
         if($image_one){
-            
-            
+
+
             $image_one_name=hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-            
+
             Image::make($image_one)->resize(300,300)->save('public/media/profile_Images/'.$image_one_name);
             $user->avatar='public/media/Profile_images/'.$image_one_name;
-            
-            
-            
+
+
+
         }
 
         $user->update();

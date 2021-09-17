@@ -11,6 +11,29 @@ class Admin extends Authenticatable
     use Notifiable;
 
         protected $guard = 'admin';
+        // protected $fillable=[
+        //     'name',
+        //     'phone',
+        //     'email',
+        //     'avatar',
+        //     'email_verified_at',
+        //     'password',
+        //     'category',
+        //     'coupon',
+        //     'product',
+        //     'blog',
+        //     'order',
+        //     'other_pro',
+        //     'report',
+        //     'role',
+        //     'return_pro',
+        //     'contact',
+        //     'comment',
+        //     'setting',
+        //     'type',
+        //     'stock'
+
+        // ];
 
         public function sendPasswordResetNotification($token)
 	    {

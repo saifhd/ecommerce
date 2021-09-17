@@ -2,14 +2,14 @@
 <?php
 
 	$categories=App\Model\Admin\Category::all();
-	
+
 	// dd($categories);
 ?>
     <nav class="main_nav">
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						
+
 						<div class="main_nav_content d-flex flex-row">
 
 							<!-- Categories Menu -->
@@ -28,13 +28,13 @@
 											@foreach($category->scategories as $cat)
 												<li><a href="{{route('pages.subcategories',$cat->id)}}">{{$cat->subcategory_name}}<i class="fas fa-chevron-right"></i></a></li>
 											@endforeach
-											
-											
+
+
 										</ul>
 									</li>
 									@endforeach
-									
-									  
+
+
 								</ul>
 							</div>
 
@@ -81,7 +81,7 @@
 											<li><a href="{{route('product.all')}}">Shop<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="{{route('product.all')}}">Product<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="{{route('blog.post')}}">Blog<i class="fas fa-chevron-down"></i></a></li>
-											
+
 											<li><a href="{{route('show.cart')}}">Cart<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="{{route('contact')}}">Contact<i class="fas fa-chevron-down"></i></a></li>
 										</ul>
@@ -107,16 +107,16 @@
 				</div>
 			</div>
 		</nav>
-		
+
 		<!-- Menu -->
 
 		<div class="page_menu">
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						
+
 						<div class="page_menu_content">
-							
+
 							<div class="page_menu_search">
 								<form action="#">
 									<input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
@@ -144,7 +144,7 @@
 								<li class="page_menu_item">
 									<a href="{{route('home')}}">Home<i class="fa fa-angle-down"></i></a>
 								</li>
-								
+
 								<li class="page_menu_item has-children">
 									<a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
 									<ul class="page_menu_selection">
@@ -170,8 +170,10 @@
 								$admin=App\Admin::where('type',1)->first();
 							?>
 							<div class="menu_contact">
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{asset('public/frontend/images/phone_white.png')}}" alt=""></div>+38 068 005 3570</div>
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{asset('public/frontend/images/mail_white.png')}}" alt=""></div><a href="mailto:{{$admin->email}}">{{$admin->email}}</a></div>
+								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{asset('/frontend/images/phone_white.png')}}" alt=""></div>+38 068 005 3570</div>
+                                @if(isset($admin))
+								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{asset('/frontend/images/mail_white.png')}}" alt=""></div><a href="mailto:{{$admin->email}}">{{$admin->email}}</a></div>
+                                @endif
 							</div>
 						</div>
 					</div>
@@ -180,5 +182,4 @@
 		</div>
 
 	</header>
-	
-	
+

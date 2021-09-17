@@ -17,7 +17,7 @@ class Comment
      */
     public function handle($request, Closure $next)
     {
-        $user=Auth::user()->id;
+        $user=auth()->user()->id;
         $admin=Admin::find($user);
         if($admin->comment==1){
             return $next($request);

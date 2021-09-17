@@ -19,7 +19,8 @@ class ProductController extends Controller
     }
 
     public function index(){
-        $product=Product::all();
+        $product=Product::with('categories')->get();
+        // dd($product); 
         return view('admin.product.index',compact('product'));
 
     }
@@ -57,30 +58,30 @@ class ProductController extends Controller
         $product->hot_new=$request->hot_new;
         $product->buyone_getone=$request->buyone_getone;
         $product->status=1;
-        
+
         $image_one=$request->file('image_one');
 
         $image_two=$request->file('image_two');
 
         $image_three=$request->file('image_three');
-        
-        
-        
+
+
+
         if($image_one && $image_two && $image_three){
-            
-            
+
+
             $image_one_name=hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-            
+
             Image::make($image_one)->resize(300,300)->save('public/media/product/'.$image_one_name);
             $product->image_one='public/media/product/'.$image_one_name;
-            
-            
+
+
             $image_two_name=hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
             // dd($image_three);
             Image::make($image_two)->resize(300,300)->save('public/media/product/'.$image_two_name);
             $product->image_two='public/media/product/'.$image_two_name;
 
-            
+
             $image_three_name=hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
             Image::make($image_three)->resize(300,300)->save('public/media/product/'.$image_three_name);
             $product->image_three='public/media/product/'.$image_three_name;
@@ -92,7 +93,7 @@ class ProductController extends Controller
             'alert-type'=>'success'
             );
         return Redirect()->back()->with($notification);
-        
+
     }
 
     public function inactive($id){
@@ -124,7 +125,7 @@ class ProductController extends Controller
         unlink($image1);
         unlink($image2);
         unlink($image3);
-        
+
         $product->delete();
         $notification=array(
             'messege'=>'Product Deleted succesfully',
@@ -181,21 +182,21 @@ class ProductController extends Controller
         $image_three=$request->file('image_three');
         if($image_one){
             $image_one_name=hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-            
+
             Image::make($image_one)->resize(300,300)->save('public/media/product/'.$image_one_name);
             $product->image_one='public/media/product/'.$image_one_name;
 
         }
         if($image_two){
             $image_two_name=hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
-            
+
             Image::make($image_two)->resize(300,300)->save('public/media/product/'.$image_two_name);
             $product->image_two='public/media/product/'.$image_two_name;
 
         }
         if($image_three){
             $image_three_name=hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
-            
+
             Image::make($image_three)->resize(300,300)->save('public/media/product/'.$image_three_name);
             $product->image_three='public/media/product/'.$image_three_name;
 

@@ -17,7 +17,7 @@ class Setting
      */
     public function handle($request, Closure $next)
     {
-        $user=Auth::user()->id;
+        $user=auth()->user()->id;
         $admin=Admin::find($user);
         if($admin->setting==1){
             return $next($request);

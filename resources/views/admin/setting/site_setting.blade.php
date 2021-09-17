@@ -1,7 +1,7 @@
 @extends('admin.admin_layouts')
 
 
-   
+
 
 @section('admin_content')
   <!-- ########## START: MAIN PANEL ########## -->
@@ -17,8 +17,9 @@
           <h6 class="card-body-title">Admin
           </h6>
           <p class="mg-b-20 mg-sm-b-30">Edit Site Settings Form</p>
+          @if(isset($setting))
         <form method="post" action="{{route('admin.update.setting',$setting->id)}}" enctype="multipart/form-data">
-        @csrf
+            @csrf
           <div class="form-layout">
             <div class="row mg-b-25">
             <div class="col-lg-4">
@@ -45,14 +46,14 @@
                   <input class="form-control" type="email" name="email" value="{{$setting->email}}" required="">
                 </div>
               </div><!-- col-4 -->
-              
+
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">Company Address: <span class="tx-danger">*</span></label>
                   <input class="form-control" type="text" name="company_address" value="{{$setting->company_address}}" required="">
                 </div>
               </div><!-- col-4 -->
-              
+
 
               <div class="col-lg-4">
                 <div class="form-group">
@@ -78,24 +79,24 @@
                   <input class="form-control" type="text" name="twitter" value="{{$setting->twitter}}">
                 </div>
               </div><!-- col-4 -->
-              
-              
-              
 
 
-              
+
+
+
+
 
             </div><!-- row -->
             <div class="row">
               <div class="col-lg-6 col-sm-6">
-                
+
                   <label class="form-control-label" for="file2"> Logo: <span class="tx-danger">*</span></label>
                   <br>
                   <label class="custom-file">
                     <input type="file" id="file2" class="custom-file-input" name="image_two" onchange="readURL2(this);" >
                     <span class="custom-file-control"></span>
-                    
-                   
+
+
                 </label>
                 <br>
                 <img src="#" id="two" alt="">
@@ -105,35 +106,39 @@
                   <img src="{{URL::to($setting->logo)}}" alt="" style="width:80px;height:80px;">
                 @endif
                 </div>
-              
+
             </div>
             <hr><br>
-            
+
             <br>
 
 
-            
 
 
 
 
-            
+
+
             <div class="form-layout-footer">
               <button class="btn btn-info mg-r-5" type="submit">Update</button>
-              
+
             </div><!-- form-layout-footer -->
           </div><!-- form-layout -->
           </form>
+
+
+
+          @endif
         </div><!-- card -->
 
-       
+
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
-    
-    
+
+
     <script type="text/javascript">
   function readURL2(input){
     if (input.files && input.files[0]) {

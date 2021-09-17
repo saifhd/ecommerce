@@ -2,29 +2,10 @@
 use App\Model\Admin\Product;
 use App\Model\Admin\Category;
 use App\Model\Admin\Subcategory;
-// use Admin;
-// use Hash;
-Route::get('/sub', function () {
-        // dd(Hash::make("udemy12345"));
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
-        // $product=Product::where('status','1')->where('hot_deal','1')->orderBy('id','desc')->get();
-        // foreach($product as $pro){
-        //         // echo $pro->product_name;
-        //         echo $pro->categories->category_name;
-        //         // echo $pro->scategories->subcategory_name;
-        //         // echo $pro->brand->brand_name;
-        //         // echo "<br>";        
-        // }
-        // echo $sc;
-        
-        
-        // foreach($pr as $pro){
-        //         echo $pro;;
-               
-        // }
-        // dd(auth:admin()->user()->id());
 
-});
 Route::get('/hash','HomeController@hash');
 
 Route::get('/', function () {return view('pages.index');})->name('index');
@@ -77,7 +58,7 @@ Route::group(['middleware'=>['coupon']],function(){
         Route::get('admin/delete/{id}/coupon', 'Admin\Category\CouponController@deletecoupon')->name('delete.coupon');
         Route::get('admin/edit/{id}/coupon', 'Admin\Category\CouponController@editcoupon')->name('edit.coupon');
         Route::post('admin/update/{id}/coupon', 'Admin\Category\CouponController@updatecoupon')->name('update.coupon');
-        
+
 });
 
 
@@ -96,7 +77,7 @@ Route::group(['middleware'=>['product']],function(){
         Route::post('admin/product/update/image/{id}', 'Admin\ProductController@updateimage')->name('image.update.product');
         //show sub category with ajax
         Route::get('get/subcategory/{category_id}', 'Admin\ProductController@GetSubcat');
-      
+
 });
 
 Route::group(['middleware'=>['blog']],function(){
@@ -106,26 +87,26 @@ Route::group(['middleware'=>['blog']],function(){
         Route::get('admin/blog/category/delete/{id}', 'Admin\PostController@deleteCategory')->name('delete.blog.category');
         Route::get('admin/blog/category/edit/{id}', 'Admin\PostController@editCategory')->name('edit.blog.category');
         Route::post('admin/blog/category/update/{id}', 'Admin\PostController@updateCategory')->name('update.blog.category');
-        
+
         Route::get('admin/blog/post/create', 'Admin\PostController@createPost')->name('add.blog.post');
         Route::post('admin/blog/post/store', 'Admin\PostController@storePost')->name('store.blog.post');
         Route::get('admin/blog/post/list', 'Admin\PostController@blogPostList')->name('all.blog.post');
         Route::get('admin/blog/post/delete/{id}', 'Admin\PostController@deletePost')->name('blog.post.delete');
         Route::get('admin/blog/post/edit/{id}', 'Admin\PostController@editPost')->name('blog.post.edit');
         Route::post('admin/blog/post/update/{id}', 'Admin\PostController@updatePost')->name('update.blog.post');
-        
-        
+
+
 });
 Route::group(['middleware'=>['other']],function(){
         //Newsletter
         Route::get('admin/newsletter', 'Admin\Category\CouponController@newsletter')->name('admin.newsletter');
-        
+
         Route::get('admin/delete/{id}/newsletter', 'Admin\Category\CouponController@deletenewsletter')->name('delete.newsletter');
 
         //SEO setting admin
         Route::get('Admin/seo', 'Admin\OrderController@seo')->name('admin.seo');
         Route::post('Admin/seo/update', 'Admin\OrderController@updateseo')->name('update.seo');
-        
+
 
 });
 
@@ -153,11 +134,11 @@ Route::group(['middleware'=>['report']],function(){
         Route::get('admin/today/delevery', 'Admin\ReportController@todayDelevery')->name('admin.today.delevery');
         Route::get('admin/this/month', 'Admin\ReportController@thismonth')->name('admin.this.month');
         Route::get('admin/search/report', 'Admin\ReportController@searchreport')->name('admin.search.report');
-        
+
         Route::post('admin/search/report/date', 'Admin\ReportController@searchbydate')->name('search.by.date');
         Route::post('admin/search/report/month', 'Admin\ReportController@searchbymonth')->name('search.by.month');
         Route::post('admin/search/report/year', 'Admin\ReportController@searchbyyear')->name('search.by.year');
-        
+
 });
 
 
@@ -172,18 +153,18 @@ Route::group(['middleware'=>['user_role']],function(){
         Route::post('admin/role/update/{id}', 'Admin\UserRoleController@updateRole')->name('admin.update.role');
 });
 Route::group(['middleware'=>['setting']],function(){
-       
+
         //Admin Site Setting
         Route::get('admin/site/setting', 'Admin\SettingController@siteSetting')->name('admin.site.setting');
         Route::post('admin/update/site/setting/{id}', 'Admin\SettingController@updateSetting')->name('admin.update.setting');
 });
 
 Route::group(['middleware'=>['setting']],function(){
-       //Admin Return 
+       //Admin Return
         Route::get('admin/return/request', 'Admin\ReturnController@request')->name('admin.return.request');
         Route::get('admin/return/aprove/{id}', 'Admin\ReturnController@aprove')->name('admin.update.return');
         Route::get('admin/all/request', 'Admin\ReturnController@allRequest')->name('admin.all.request');
-        
+
 });
 
 
@@ -191,7 +172,7 @@ Route::group(['middleware'=>['contact']],function(){
       //Admin Contact
         Route::get('admin/all/messages', 'Admin\ContactController@allContact')->name('admin.all.contact');
         Route::get('admin/messages/read/{id}', 'Admin\ContactController@readed')->name('admin.message.read');
- 
+
  });
 //Admin Contact
 
@@ -269,8 +250,8 @@ Route::get('all/products/price/filter', 'FrontController@productFilterPrice')->n
 //Edit Admin Profile
 
 Route::group(['middleware'=>['profile']],function(){
-        Route::get('Admin/edit/profile/{id}', 'Admin\UserRoleController@editAdminProfile')->name('edit.admin.profile'); 
-        Route::post('Admin/update/profile/{id}', 'Admin\UserRoleController@updateAdminProfile')->name('admin.update.profile'); 
+        Route::get('Admin/edit/profile/{id}', 'Admin\UserRoleController@editAdminProfile')->name('edit.admin.profile');
+        Route::post('Admin/update/profile/{id}', 'Admin\UserRoleController@updateAdminProfile')->name('admin.update.profile');
 });
 
 //Laravel Socialite

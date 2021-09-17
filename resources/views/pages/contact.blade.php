@@ -16,7 +16,9 @@
 							<div class="contact_info_image"><img src="images/contact_1.png" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Phone</div>
+                                @if(isset($contact))
 								<div class="contact_info_text">{{$contact->phone1}}</div>
+                                @endif
 							</div>
 						</div>
 
@@ -25,7 +27,9 @@
 							<div class="contact_info_image"><img src="images/contact_2.png" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Email</div>
+                                @if(isset($contact))
 								<div class="contact_info_text">{{$contact->email}}</div>
+                                @endif
 							</div>
 						</div>
 
@@ -34,7 +38,9 @@
 							<div class="contact_info_image"><img src="images/contact_3.png" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Address</div>
+                                @if(isset($contact))
 								<div class="contact_info_text">{{$contact->company_address}}</div>
+                                @endif
 							</div>
 						</div>
 
@@ -62,7 +68,7 @@
 							</div>
 							<div class="contact_form_text">
 								<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-							</div> 
+							</div>
 							<div class="contact_form_button">
 								<button type="submit" class="button contact_submit_button">Send Message</button>
 							</div>

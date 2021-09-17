@@ -16,7 +16,7 @@ class Product extends Model
         'image_two','image_three','status'
     ];
     public function categories(){
-        return $this->belongsTo(Category::class,'category_id');
+        return $this->belongsTo(Category::class,'category_id','id');
     }
     public function scategories(){
         return $this->belongsTo(Subcategory::class,'subcategory_id');
@@ -27,5 +27,5 @@ class Product extends Model
     public function order(){
         return $this->hasMany(OrderDetail::class);
     }
-    
+
 }
